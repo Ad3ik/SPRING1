@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userList" class="java.util.ArrayList"/>
+    <bean id="userRepository" class="UserRepository">
+        <constructor-arg name="UL" ref="userList"/>
+    </bean>
+    <bean id="userService" class="UserService">
+        <constructor-arg name="UR" ref="userRepository"/>
+    </bean>
+    <bean id="console" class="java.io.Console"/>
+    <bean id="consoleClient" class="ConsoleClient">
+        <constructor-arg name="c" ref="console"/>
+        <constructor-arg name="u" ref="userService"/>
+    </bean>
+
+
+
+</beans>
